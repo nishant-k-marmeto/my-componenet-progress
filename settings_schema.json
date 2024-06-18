@@ -1,0 +1,48 @@
+{
+    "name": "Multi-level cart messages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "is_custom_cart_message",
+        "label": "Enable Multi-level Cart messages",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Level 1"
+      },
+      {
+        "type": "text",
+        "id": "cart_threshold_level_1",
+        "label": "Cart threshold",
+        "info": "Only write a number,will be used to show custom message",
+        "default": "5000"
+      },
+      {
+        "type": "html",
+        "id": "cart_level_1_message_lt",
+        "label": "Message if less than threshold"
+      },
+      {
+        "type": "html",
+        "id": "cart_level_1_message_gte",
+        "label": "Message if equal or greater than threshold"
+      },
+      {
+        "type": "header",
+        "content": "Level 2"
+      },
+      {
+        "type": "text",
+        "id": "cart_threshold_level_2",
+        "label": "Cart threshold",
+        "info": "Only write a number, no letters",
+        "default": "50"
+      },
+      {
+        "type": "html",
+        "id": "cart_level_2_message_gte",
+        "label": "Message if equal or greater than threshold"
+      }
+    ]
+  },
