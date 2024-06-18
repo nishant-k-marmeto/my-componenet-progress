@@ -1,0 +1,45 @@
+{{'cart-gamification.css'| asset_url | stylesheet_tag }}
+
+{% assign threshold_one = settings.first_threshold_number %}
+{% assign threshold_two = settings.second_threshold_number %}
+{% assign message_stage1 = settings.first_threshold %}
+{% assign message_stage2 = settings.second_threshold %}
+{% assign total = cart.total_price | divided_by: 100 %}
+{% assign percentage1 = total | minus: threshold_one %}
+<div class="flex-Progress">
+  <div class="progress__bar-one">
+    <div class="flex__center">
+      <div class="mar_top-5">
+        {% if total < threshold_one %}
+         {% render 'one-icon' %}
+       {% else %}
+         {% render 'check-icon' %}   
+        {% endif %}
+      </div>
+     <div class="col col_1">
+        <div class="meter">
+          {% if total > threshold_one %}  
+            <span style="width: {{ percentage1 | divided_by : 100 | times:  2 }}%;"></span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="progress__bar-two">
+    <div class="flex__center">
+      <div class="second_threeshold">
+        {% if total < threshold_two %}
+          {% render 'two-icon' %}
+        {% else %}
+          {% render 'check-icon' %}   
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="free_items_container">
+    <h2>{{ message_stage1 }}</h2>
+    <h2>{{ message_stage2 }}</h2>
+  </div>
