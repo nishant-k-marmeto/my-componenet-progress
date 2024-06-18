@@ -1,0 +1,48 @@
+<div class="offer_message">
+        {%- if settings.cart_show_free_shipping_threshold -%}
+          {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
+
+          <div class="Cart__ShippingNotice Text--subdued">
+            <div class="Drawer__Container upsell_heading_div" style="padding:0">
+              {%- if cart.total_price >= threshold_in_cents -%}
+                <h1>{{ settings.cart_free_shipping_text }}</h1>
+                {% if settings.show_discount %}
+                  <div class="offer-eligibility">
+                    <!-- Trigger/Open The Modal -->
+                    <span id="offer-popup-button" onclick="offerPopup()">Click here </span
+                    ><span>to check the cashback t&c.</span>
+                    <div id="offer-detail-modal-cart" class="popup-modal-cart">
+                      <div class="modal-content-cart modal-center">
+                        <span class="close-cart" onclick="offerPopupClose()">&times;</span>
+                        <div>{{ settings.discount_html }}</div>
+                        <strong><a href="{{ settings.url_link }}">Click for more details.</a></strong> <br>
+                        <strong>{{ settings.discount_title }}</strong>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {%- else -%}
+                {%- capture remaining_amount -%}<span>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span>{%- endcapture -%}
+                {% if settings.show_discount %}
+                  <div class="offer-eligibility">
+                    <!-- Trigger/Open The Modal -->
+                    <span>
+                      {{- settings.cart_free_shipping_threshold_text | replace: 'remaining_amount', remaining_amount -}}
+                    </span>
+                    <span id="offer-popup-button" onclick="offerPopup()">Click here </span><span>to know more.</span>
+                    <a href="{{ settings.cart_shop_more_url }}" class="shop_more_link">Shop more</a>
+                    <div id="offer-detail-modal-cart" class="popup-modal-cart">
+                      <div class="modal-content-cart modal-center">
+                        <span class="close-cart" onclick="offerPopupClose()">&times;</span>
+                        <div>{{ settings.discount_html }}</div>
+                        <strong><a href="{{ settings.url_link }}">Click for more details.</a></strong> <br>
+                        <strong>{{ settings.discount_title }}</strong>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {%- endif -%}
+            </div>
+          </div>
+        {% endif %}
+      </div>
