@@ -1,0 +1,92 @@
+.free_items_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+}
+.free_items_container h2 {
+  font-weight: bold;
+  text-align: center;
+}
+.flex-Progress {
+  display: flex;
+  align-items: flex-start;
+}
+.mar_top-5 {
+  margin-top: 5px;
+  padding: 10px 10px 10px 0;
+}
+.second_threeshold  {
+  margin-top: 5px;
+  padding: 10px 0 10px 10px;
+}
+.progress__bar-text p {
+  width: 68%;
+}
+.col {
+  width: 100%;
+  height: 100%;
+}
+.progress__bar-one {
+  width: 100%;
+}
+.flex__center {
+  display: flex;
+  align-items: center;
+}
+.progress__bar-text {
+  width: 33.33%;
+  display: flex;
+}
+.progress__bar-text.one {
+  justify-content: flex-start;
+}
+.progress__bar-text.two {
+  justify-content: center;
+}
+.progress__bar-text.three {
+  justify-content: flex-end;
+}
+/* Progress Bar */
+.meter {
+  height: 6px;
+  position: relative;
+  background: #EAEAEA;
+  border-radius: 3px;
+}
+.flex-Progress svg {
+  height: 3.6rem;
+  width: 2.5rem;
+}
+.meter > span {
+  display: block;
+  height: 6px;
+  background-color: #000;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  animation: move 2s linear infinite;
+  max-width: 100%;
+}
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 30px 30px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .meter {
+    height: 5px;
+  }
+  .progress__bar-text p {
+    width: 58%;
+  }
+  .flex-Progress {
+    gap: 4.5px;
+  }
+  .mar_top-5 {
+    margin-right: 4.5px;
+  }
+}
